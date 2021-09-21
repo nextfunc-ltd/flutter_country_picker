@@ -10,6 +10,7 @@ void showCountryListBottomSheet({
   VoidCallback? onClosed,
   List<String>? exclude,
   List<String>? countryFilter,
+  String initCountrySelected = '',
   bool showPhoneCode = false,
   CountryListThemeData? countryListTheme,
   bool searchAutofocus = false,
@@ -26,6 +27,7 @@ void showCountryListBottomSheet({
       showPhoneCode,
       countryListTheme,
       searchAutofocus,
+      initCountrySelected,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
@@ -40,6 +42,7 @@ Widget _builder(
   bool showPhoneCode,
   CountryListThemeData? countryListTheme,
   bool searchAutofocus,
+  String initCountrySelected,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
@@ -57,8 +60,8 @@ Widget _builder(
 
   final BorderRadius _borderRadius = countryListTheme?.borderRadius ??
       const BorderRadius.only(
-        topLeft: Radius.circular(40.0),
-        topRight: Radius.circular(40.0),
+        topLeft: Radius.circular(10.0),
+        topRight: Radius.circular(10.0),
       );
 
   return Container(
@@ -74,6 +77,7 @@ Widget _builder(
       showPhoneCode: showPhoneCode,
       countryListTheme: countryListTheme,
       searchAutofocus: searchAutofocus,
+      initCountrySelected: initCountrySelected,
     ),
   );
 }

@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
+  String initCountry = '';
 
   @override
   Widget build(BuildContext context) {
@@ -58,21 +59,22 @@ class HomePage extends StatelessWidget {
               //Optional.  Can be used to exclude(remove) one ore more country from the countries list (optional).
               exclude: <String>['KN', 'MF'],
               //Optional. Shows phone code before the country name.
-              showPhoneCode: true,
+              showPhoneCode: false,
+              initCountrySelected: initCountry,
               onSelect: (Country country) {
-                print('Select country: ${country.displayName}');
+                print('Select country: ${country.displayNameNoCountryCode}');
+                initCountry = country.displayNameNoCountryCode;
               },
               // Optional. Sets the theme for the country list picker.
               countryListTheme: CountryListThemeData(
                 // Optional. Sets the border radius for the bottomsheet.
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40.0),
-                  topRight: Radius.circular(40.0),
+                  topLeft: Radius.circular(10.0),
+                  topRight: Radius.circular(10.0),
                 ),
                 // Optional. Styles the search field.
                 inputDecoration: InputDecoration(
-                  labelText: 'Search',
-                  hintText: 'Start typing to search',
+                  hintText: 'Search',
                   prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(

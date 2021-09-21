@@ -14,6 +14,7 @@ class Country {
   final int e164Sc;
   final bool geographic;
   final int level;
+  bool isSelected;
 
   ///The country name in English
   final String name;
@@ -50,6 +51,7 @@ class Country {
     required this.e164Sc,
     required this.geographic,
     required this.level,
+    this.isSelected = false,
     required this.name,
     this.nameLocalized = '',
     required this.example,
@@ -64,6 +66,7 @@ class Country {
         countryCode = json['iso2_cc'],
         e164Sc = json['e164_sc'],
         geographic = json['geographic'],
+        isSelected = json['']?? false,
         level = json['level'],
         name = json['name'],
         example = json['example'],

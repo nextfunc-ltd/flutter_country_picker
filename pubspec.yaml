@@ -18,4 +18,8 @@ dev_dependencies:
     sdk: flutter
   lint: ^1.5.3
 
+  flutter_localizations:
+    sdk: flutter
 flutter:
+  assets:
+    - assets/
