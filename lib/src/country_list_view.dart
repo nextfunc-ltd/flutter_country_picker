@@ -64,14 +64,6 @@ class _CountryListViewState extends State<CountryListView> {
     _searchController = TextEditingController();
     _countryList =
         countryCodes.map((country) => Country.from(json: country)).toList();
-    if(widget.initCountrySelected != ''){
-      for(int i = 0 ; i < _countryList.length; i++){
-        if(_countryList[i].displayNameNoCountryCode.contains(widget.initCountrySelected)){
-          position = i;
-          break;
-        }
-      }
-    }
     //Remove duplicates country if not use phone code
     if (!widget.showPhoneCode) {
       final ids = _countryList.map((e) => e.countryCode).toSet();
@@ -89,7 +81,14 @@ class _CountryListViewState extends State<CountryListView> {
 
     _filteredList = <Country>[];
     _filteredList.addAll(_countryList);
-
+    if(widget.initCountrySelected != ''){
+      for(int i = 0 ; i < _filteredList.length; i++){
+        if(_filteredList[i].displayNameNoCountryCode.contains(widget.initCountrySelected)){
+          position = i;
+          break;
+        }
+      }
+    }
     _searchAutofocus = widget.searchAutofocus;
     onWidgetBuildDone(_autoScroll);
   }
